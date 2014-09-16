@@ -2,7 +2,7 @@
 <addons>
 <addon id="metadata.movie.brazzers.com"
        name="Brazzers"
-       version="1.4.4"
+       version="1.4.5"
        provider-name="slashing">
   <requires>
     <import addon="xbmc.metadata" version="1.0"/>
