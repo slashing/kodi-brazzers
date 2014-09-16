@@ -2,7 +2,7 @@
 	<addon id="repository.slashing" name="Brazzers-addon" version="1.0" provider-name="slashing">
 		<extension point="xbmc.addon.repository" name="XBMC Adult Addons">
 			<info compressed="false">http://github.com/slashing/kodi-brazzers/raw/master/addons.xml</info>
-			<checksum>https://github.com/slashing/kodi-brazzers/raw/master/addons.xml.md5</checksum>
+			<checksum>http://github.com/slashing/kodi-brazzers/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">http://raw.github.com/slashing/kodi-brazzers/master</datadir>
 		</extension>
 		<extension point="xbmc.addon.metadata">
