@@ -1,67 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<scraper language="en" thumb="icon.png" date="2013-04-25" content="movies" framework="1.1" name="brazzers">
+<scraper language="en" thumb="icon.png" date="2014-09-16" content="movies" framework="1.1" name="brazzers">
     <NfoUrl dest="3">
         <RegExp dest="3" output="&lt;url&gt;http://www.brazzers.com/scenes/view/id/\1/&lt;/url&gt;" input="$$1">
             <expression noclean="1">brazzers.com/scenes/view/id/([0-9]*)/([^/]*)/</expression>
         </RegExp>
     </NfoUrl>
     <CreateSearchUrl dest="3">
-        <RegExp dest="3" output="&lt;url&gt;http://www.brazzers.com/search/all?keyword=\1&lt;/url&gt;" input="$$1">
+        <RegExp dest="3" output="&lt;url&gt;http://www.brazzers.com/search/all/?q=\1&lt;/url&gt;" input="$$1">
             <expression noclean="1"></expression>
         </RegExp>
     </CreateSearchUrl>
     <GetSearchResults dest="6">
         <RegExp dest="6" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;&lt;results&gt;\1&lt;/results&gt;" input="$$4">
             <RegExp dest="4+" output="&lt;entity&gt;&lt;title&gt;\3&lt;/title&gt;&lt;url&gt;http://www.brazzers.com/scenes/view/id/\1&lt;/url&gt;&lt;/entity&gt;" input="$$1">
-                <expression clear="yes" repeat="yes">&lt;a href=&quot;/scenes/view/id/([0-9]*)/([^/]*)/&quot;\s*title=&quot;([^&quot;]*)</expression>
+                <expression clear="yes" repeat="yes">&lt;div class=&quot;scene-card-title&quot;&gt;\s*&lt;a href=&quot;/scenes/view/id/([0-9]*)/([^/]*)/&quot;\s*title=&quot;([^&quot;]*)</expression>
             </RegExp>
             <expression noclean="1"></expression>
         </RegExp>
     </GetSearchResults>
     <GetDetails dest="7">
         <RegExp dest="7" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;\1&lt;/details&gt;" input="$$5">
-            <RegExp dest="5+" output="&lt;title&gt;\2 - \1&lt;/title&gt;" input="$$1">
-                <expression trim="1">&lt;h1&gt;\s*([^&lt;]*)\s*&lt;span class=&quot;.*?&quot;&gt;&lt;/span&gt;\s*&lt;/h1&gt;\s*&lt;h2 style=[^&gt;]*&gt;\s*&lt;[^&gt;]*&gt;([^&lt;]*)&lt;/a&gt;.*?&lt;[^&gt;]*&gt;([^&lt;]*)&lt;/a&gt;.{1,3}&lt;[^&gt;]*&gt;([^&lt;]*)
-</expression>
+            <RegExp dest="5+" output="&lt;title&gt;\1&lt;/title&gt;" input="$$1">
+                <expression trim="1">&lt;h1 itemprop=&quot;name&quot;&gt;([^&lt;]*)</expression>
             </RegExp>
             <RegExp dest="5+" output="&lt;plot&gt;\1&lt;/plot&gt;" input="$$1">
-                <expression trim="1">&lt;/script&gt;\s*&lt;p&gt;([^&lt;]*)</expression>
+                <expression trim="1">&lt;p itemprop=&quot;description&quot;&gt;([^&lt;]*)</expression>
+            </RegExp>
+            <RegExp dest="5+" output="&lt;outline&gt;\1.&lt;/outline&gt;" input="$$1">
+                <expression trim="1">&lt;p itemprop=&quot;description&quot;&gt;([^.]*)</expression>
             </RegExp>
             <RegExp dest="5+" output="&lt;year&gt;\1&lt;/year&gt;" input="$$1">
-                <expression noclean="1">&lt;date&gt;[^,]*, ([0-9]*)</expression>
+                <expression noclean="1">[^,]*, ([0-9]*)&lt;/aside&gt;</expression>
+            </RegExp>
+            <RegExp dest="5+" output="&lt;actor&gt;&lt;name&gt;\2&lt;/name&gt;&lt;thumb&gt;\1&lt;/thumb&gt;&lt;/actor&gt;" input="$$9">
+                <RegExp dest="9" output="\1" input="$$1">
+                    <expression noclean="1">&lt;div class=&quot;scene-tour-right&quot;&gt;(.*)&lt;/div&gt;</expression>
+                </RegExp>
+                <expression repeat="yes">&lt;img src=&quot;([^&quot;]*)&quot; alt=&quot;([^&quot;]*)</expression>
+            </RegExp>
+            <RegExp dest="5+" output="&lt;genre&gt;\1&lt;/genre&gt;" input="$$8">
+                <RegExp dest="8" output="\1" input="$$1">
+                    <expression noclean="1">&lt;div class=&quot;tag-card-container&quot;&gt;(.*?)&lt;/div&gt;</expression>
+                </RegExp>
+                <expression repeat="yes">&lt;a href=[^&gt;]*&gt;([^&lt;]*)</expression>
+            </RegExp>
+            <RegExp dest="5+" output="&lt;tagline&gt;\1&lt;/tagline&gt;" input="$$1">
+                <expression>class=&quot;label-text&quot;&gt;([^&lt;]*)&lt;/span&gt;\s*.*\s*&lt;aside</expression>
             </RegExp>
             <RegExp dest="5+" output="&lt;thumb&gt;\1&lt;/thumb&gt;" input="$$9">
                 <RegExp dest="9" output="\1" input="$$1">
                     <expression noclean="1">&lt;div class=&quot;content-box scene-hqpics-previews&quot;&gt;(.*?)&lt;/div&gt;</expression>
                 </RegExp>
-                <expression repeat="yes">&lt;a rel=&quot;preview&quot; href=&quot;([^&quot;]*)</expression>
+                <expression repeat="yes">&lt;a rel=&quot;preview&quot;\s*href=&quot;([^&quot;]*)</expression>
             </RegExp>
-            <RegExp dest="5+" output="&lt;actor&gt;&lt;name&gt;\3&lt;/name&gt;&lt;thumb&gt;\2&lt;/thumb&gt;&lt;/actor&gt;" input="$$9">
-                <RegExp dest="9" output="\1" input="$$1">
-                    <expression noclean="1">&lt;ul id=&quot;featuring-carousel&quot; class=&quot;jcarousel-skin-default&quot; data-trackid=&quot;BZ:TOUR:SCENES:LINK  Featuring images&quot;&gt;(.*?)&lt;/ul&gt;</expression>
-                </RegExp>
-                <expression repeat="yes">&lt;a href=&quot;/profile/view/id/[0-9]*/([^/]*)/&quot; class=&quot;model-img&quot;&gt;\s*&lt;img src=&quot;([^&quot;]*)&quot; /&gt;\s*&lt;/a&gt;\s*&lt;/div&gt;\s*&lt;div class=&quot;model-card-info&quot;&gt;\s*&lt;h3&gt;&lt;a href=&quot;[^&quot;]*&quot;&gt;&lt;span\s*class=&quot;model-card-info-name&quot;&gt;([^&lt;]*)</expression>
-            </RegExp>
-            <RegExp dest="5+" output="&lt;genre&gt;\1&lt;/genre&gt;" input="$$8">
-                <RegExp dest="8" output="\1" input="$$1">
-                    <expression noclean="1">&lt;div class=&quot;scene-categories&quot; data-trackid=&quot;BZ:TOUR:SCENES:LINK scene-tags&quot;&gt;(.*?)&lt;/div&gt;</expression>
-                </RegExp>
-                <expression repeat="yes">&lt;a href=[^&gt;]*&gt;([^&lt;]*)</expression>
-            </RegExp>
-            <RegExp dest="5+" output="&lt;tagline&gt;\1&lt;/tagline&gt;" input="$$1">
-                <expression>&lt;span class=&quot;label-left-box&quot;&gt;[^&lt;]*&lt;/span&gt;\s*&lt;span class=&quot;label-text&quot;&gt;([^&lt;]*)</expression>
-            </RegExp>
-            <RegExp dest="5+" output="&lt;outline&gt;\1.&lt;/outline&gt;" input="$$1">
-                <expression>&lt;/script&gt;\s*&lt;p&gt;([^.]*)</expression>
-            </RegExp>
-            <RegExp dest="5+" output="&lt;runtime&gt;\1&lt;/runtime&gt;" input="$$1">
-                <expression>&lt;span class=&quot;scene-length&quot;&gt;([0-9]*)</expression>
-            </RegExp>
-            <RegExp dest="5+" output="&lt;votes&gt;\1&lt;/votes&gt;" input="$$1">
-                <expression>&lt;span class=&quot;icon-16x16 icon-voteup&quot;&gt;&lt;/span&gt;\s*([0-9]*)</expression>
+            <RegExp dest="5+" output="&lt;runtime&gt;\2&lt;/runtime&gt;" input="$$1">
+                <expression>&lt;li class=&quot;scene-length&quot; itemprop=&quot;duration&quot; content=&quot;(.*?)&quot;&gt;([0-9]*)</expression>
             </RegExp>
             <RegExp dest="5+" output="&lt;studio&gt;\1&lt;/studio&gt;" input="$$1">
-                <expression>&lt;span class=&quot;label-left-box&quot;&gt;[^&lt;]*&lt;/span&gt;\s*&lt;span class=&quot;label-text&quot;&gt;([^&lt;]*)</expression>
+                <expression>class=&quot;label-text&quot;&gt;([^&lt;]*)&lt;/span&gt;\s*.*\s*&lt;aside</expression>
             </RegExp>
             <RegExp dest="5+" output="&lt;mpaa&gt;Rated NC-17&lt;/mpaa&gt;" input="$$1">
                 <expression></expression>
@@ -70,7 +66,7 @@
                 <RegExp dest="9" output="\1" input="$$1">
                     <expression noclean="1">&lt;div class=&quot;content-box scene-hqpics-previews&quot;&gt;(.*?)&lt;/div&gt;</expression>
                 </RegExp>
-                <expression repeat="yes" noclean="1">&lt;a rel=&quot;preview&quot; href=&quot;([^&quot;]*?img)</expression>
+                <expression repeat="yes" noclean="1">&lt;a rel=&quot;preview&quot;\s*href=&quot;([^&quot;]*?img)</expression>
             </RegExp>
             <RegExp dest="5+" output="&lt;country&gt;USA&lt;/country&gt;" input="$$1">
                 <expression></expression>
@@ -79,13 +75,13 @@
                 <expression noclean="1">(http:)././(http.trailers.*?.com)./(\d{1,4})./(\w{1,4})./(.*?.(mp4|flv|f4v))</expression>
             </RegExp>
             <RegExp dest="5+" output="&lt;director&gt;\1&lt;/director&gt;" input="$$1">
-                <expression noclean="1">&lt;span class=&quot;label-left-box&quot;&gt;[^&lt;]*&lt;/span&gt;\s*&lt;span class=&quot;label-text&quot;&gt;([^&lt;]*)</expression>
+                <expression noclean="1">class=&quot;label-text&quot;&gt;([^&lt;]*)&lt;/span&gt;\s*.*\s*&lt;aside</expression>
             </RegExp>
             <RegExp dest="5+" output="&lt;credits&gt;BRAZZERS&lt;/credits&gt;" input="$$1">
                 <expression noclean="1"></expression>
             </RegExp>
             <RegExp dest="5+" output="&lt;set&gt;\1&lt;/set&gt;" input="$$1">
-                <expression trim="1">&lt;span class=&quot;label-left-box&quot;&gt;[^&lt;]*&lt;/span&gt;\s*&lt;span class=&quot;label-text&quot;&gt;([^&lt;]*)</expression>
+                <expression>class=&quot;label-text&quot;&gt;([^&lt;]*)&lt;/span&gt;\s*.*\s*&lt;aside</expression>
             </RegExp>
             <expression noclean="1"></expression>
         </RegExp>
