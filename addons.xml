@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="metadata.movie.brazzers.com"
+       name="Brazzers"
+       version="1.4.1"
+       provider-name="slashing">
+  <requires>
+    <import addon="xbmc.metadata" version="1.0"/>
+    <import addon="metadata.common.themoviedb.org" version="1.0"/>
+  </requires>
+  <extension point="xbmc.metadata.scraper.movies"
+             language="en"
+             library="brazzers.xml"/>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Brazzer.com scraper</summary>
+    <description lang="en">Download XXX scene information from brazzers.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+
+
+<addon id="repository.xbmc-brazzers" name="XBMC-Adult Addons" version="1.0.0" provider-name="slashing">
+		<extension point="xbmc.addon.repository" name="XBMC Adult Addons">
+			<info compressed="false">http://raw.github.com/xbmc-adult/xbmc-adult/ghmaster/addons.xml</info>
+			<checksum>http://raw.github.com/xbmc-adult/xbmc-adult/ghmaster/addons.xml.md5</checksum>
+			<datadir zip="true">http://raw.github.com/xbmc-adult/xbmc-adult/ghmaster</datadir>
+		</extension>
+		<extension point="xbmc.addon.metadata">
+			<summary>XBMC Addons for Brazzers</summary>
+			<description>Scene information</description>
+		<disclaimer>The owners and submitters to this repository do not host or distribute any of the content displayed by these addons nor do they have any affiliation with the content providers.</disclaimer>
+			<platform>all</platform>
+	</extension>
+</addon>
+</addons>
