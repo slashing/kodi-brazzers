@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="metadata.movie.brazzers.com"
-       name="Brazzers"
-       version="1.4.5"
-       provider-name="slashing">
-  <requires>
-    <import addon="xbmc.metadata" version="1.0"/>
-    <import addon="metadata.common.themoviedb.org" version="1.0"/>
-  </requires>
-  <extension point="xbmc.metadata.scraper.movies"
-             language="en"
-             library="brazzers.xml"/>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Brazzer.com scraperrrrr</summary>
-    <description lang="en">Download XXX scene information from brazzers.com</description>
-    <platform>all</platform>
-  </extension>
-</addon>
+
+	<addon id="metadata.movie.brazzers.com"
+		   name="Brazzers"
+		   version="1.4.5"
+		   provider-name="slashing">
+		<requires>
+			<import addon="xbmc.metadata" version="1.0"/>
+			<import addon="metadata.common.themoviedb.org" version="1.0"/>
+		</requires>
+		<extension point="xbmc.metadata.scraper.movies"
+				language="en"
+				library="brazzers.xml"/>
+		<extension point="xbmc.addon.metadata">
+			<summary lang="en">Brazzer.com scraper</summary>
+			<description lang="en">Download XXX scene information from brazzers.com</description>
+			<platform>all</platform>
+		</extension>
+	</addon>
 
 	<addon id="repository.slashing" name="Brazzers-addon" version="1.0" provider-name="slashing">
 		<extension point="xbmc.addon.repository" name="XBMC Adult Addons">
@@ -28,7 +29,7 @@
 			<summary>XBMC Addons for Brazzers</summary>
 			<description>Scene information</description>
 			<platform>all</platform>
-	</extension>
-</addon>
+		</extension>
+	</addon>
 
 </addons>
