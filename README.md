@@ -1,4 +1,16 @@
-kodi-brazzers
-=============
+Repository for XBMC/Kodi
+==
 
-Download scene information from brazzers.com.
+•	Download Repo/Repository.slashing/ current release
+
+•	Install add-ons from zip file
+
+•	Get Add-ons
+
+•	Brazzers-addon-repository
+
+•	Movie information
+
+•	Install Brazzers-scraper
+
+
