@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<scraper language="en" thumb="icon.png" date="2014-09-16" content="movies" framework="1.1" name="brazzers">
+<scraper language="en" thumb="icon.png" date="2014-09-16" content="movies" framework="1.1" name="Brazzers-scraper">
     <NfoUrl dest="3">
         <RegExp dest="3" output="&lt;url&gt;http://www.brazzers.com/scenes/view/id/\1/&lt;/url&gt;" input="$$1">
             <expression noclean="1">brazzers.com/scenes/view/id/([0-9]*)/([^/]*)/</expression>
