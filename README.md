@@ -1,7 +1,7 @@
 Repository for XBMC/Kodi
 ==
 
-•	Download Repo/Repository.slashing/ current release
+•	Download: Repo/Repository.slashing/ current release
 
 •	Install add-ons from zip file
 
