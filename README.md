@@ -3,6 +3,8 @@ Repository for XBMC/Kodi
 
 •	Download: Repo/Repository.slashing/ current release
 
+        https://github.com/slashing/kodi-brazzers/blob/master/repo/repository.slashing/repository.slashing-1.0.2.zip?raw
+  
 •	Install add-ons from zip file
 
 •	Get Add-ons
